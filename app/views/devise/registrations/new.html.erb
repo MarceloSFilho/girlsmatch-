@@ -4,6 +4,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :mentor,     as: :check_boxes %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
