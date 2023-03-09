@@ -4,6 +4,9 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :mentor,     as: :boolean %>
+    <%= f.input :student,    as: :boolean %>
+    <%= f.input :username                 %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
