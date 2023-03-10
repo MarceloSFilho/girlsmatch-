@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema[7.0].define(version: 2023_03_10_135333) do
+=======
 ActiveRecord::Schema[7.0].define(version: 2023_03_09_220001) do
+>>>>>>> 93cf615f3ac7a39f48f658bc9c7504a76405a66c
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "mentorships", force: :cascade do |t|
     t.boolean "completed"
@@ -23,6 +33,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_220001) do
     t.datetime "updated_at", null: false
     t.index ["mentor_id"], name: "index_mentorships_on_mentor_id"
     t.index ["student_id"], name: "index_mentorships_on_student_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "skills", force: :cascade do |t|
@@ -53,5 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_220001) do
 
   add_foreign_key "mentorships", "users", column: "mentor_id"
   add_foreign_key "mentorships", "users", column: "student_id"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "skills", "users"
 end
