@@ -1,4 +1,4 @@
-<h2>Resend unlock instructions</h2>
+<h2 class="sign">Resend unlock instructions</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
   <%= f.error_notification %>
@@ -8,7 +8,7 @@
     <%= f.input :email,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email" } %>
+                input_html: { autocomplete: "email"} %>
   </div>
 
   <div class="form-actions">
