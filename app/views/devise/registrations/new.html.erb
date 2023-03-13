@@ -18,10 +18,10 @@
       <%= f.input :password_confirmation,
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
+      <%= f.input :photo, as: :file %>
     </div>
-  <%- if controller_name != 'sessions' %>
-    <%= f.button :submit, "Submit", class:"btn-default-sign" %>
-    <%= link_to "Log in", new_session_path(resource_name), class:"btn-default" %><br />
+    <%- if controller_name != 'sessions' %>
+      <%= f.button :submit, "Submit", class:"btn-default-sign" %>
     <% end %>
   <% end %>
   <%= render "devise/shared/links" %>
