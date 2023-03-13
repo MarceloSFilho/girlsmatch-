@@ -1,0 +1,4 @@
+ <%= simple_form_for(@skill) do |f| %>
+  <%= f.input :language, collection: Skill::LANGUAGES, include_blank: false %>
+  <%= f.submit %>
+<% end %>

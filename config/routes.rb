@@ -10,12 +10,12 @@ Rails.application.routes.draw do
   get "/profile", to: "users#profile", as: "profile"
   get "mentorships", to: "mentorships#index"
   get "my_proposals", to: "mentorships#my_proposals"
-  get "skills/new", to: "skills#update"
+
 
   resources :users do
     resources :mentorships, except: :index
   end
-
+  resources :skills
 end
 
 
