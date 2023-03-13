@@ -1,4 +1,5 @@
-<h1>USER PAGE</h1>
+<h1>
+  <%= @user.username %>
+</h1>
 
- <%= link_to "Choose a mentor", mentorships_path, class:"btn btn-primary" %><br />
- <%= link_to "My proposals", my_proposals_path, class:"btn btn-primary" %><br />
+<%= link_to "Choose this mentor", new_user_mentorship_path(@user) %>

@@ -7,9 +7,20 @@ Rails.application.routes.draw do
   end
   # Defines the root path route ("/")
   # root "articles#index"
-  get "/users/:id", to: "users#show"
+  get "/profile", to: "users#profile", as: "profile"
   get "mentorships", to: "mentorships#index"
   get "my_proposals", to: "mentorships#my_proposals"
   get "skills/new", to: "skills#update"
 
+  resources :users do
+    resources :mentorships, except: :index
+  end
+
 end
+
+
+# get "/users/:id", to: "users#show", as: "users" do
+#  get "/users/:user_id/mentorships/new", to: "mentorships#new", as: "mentorships"
+# end
+
+#
