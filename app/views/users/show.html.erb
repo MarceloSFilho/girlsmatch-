@@ -2,4 +2,4 @@
   <%= @user.username %>
 </h1>
 
-<%= link_to "Choose this mentor", new_user_mentorship_path(@user) %>
+<%= link_to "Choose this mentor", user_mentorships_path(@user), data: { "turbo_method": :post } %>

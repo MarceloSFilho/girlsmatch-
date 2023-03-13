@@ -1,4 +1,17 @@
 <h1>My proposals</h1>
 
-<%= @mentor %>
-<%= @status  %>
+<%= current_user.username %>
+
+<% @mentorships.each do |mentorship| %>
+  <% if current_user.student %>
+    <% chatroom = Chatroom.find_by(student: current_user, mentor: mentorship.mentor) %>
+    <%= mentorship.mentor.username %>
+    <%= mentorship.completed %>
+    <%= link_to "Abrir chat", chatroom_path(chatroom) if mentorship.accepted %>
+  <% else %>
+    <%= mentorship.student.username %>
+    <%= mentorship.completed %>
+    <%= mentorship.accepted %>
+    <%= link_to "Aceitar", mentorship_path(mentorship), data: { "turbo_method": :patch} %>
+  <% end %>
+<% end %>

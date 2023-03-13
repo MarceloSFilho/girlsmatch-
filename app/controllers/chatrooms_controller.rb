@@ -1,8 +1,8 @@
 class ChatroomsController < ApplicationController
 
-  def create
-    @chatroom = Chatroom.new(params[:student_id,:mentor_id])
-  end
+ # def create
+ #   @chatroom = Chatroom.create!(params)
+ # end
 
   def show
     @chatroom = Chatroom.find(params[:id])
