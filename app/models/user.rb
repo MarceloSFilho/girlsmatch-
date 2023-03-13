@@ -4,9 +4,6 @@ class User < ApplicationRecord
   has_many :skills, dependent: :destroy
   has_one_attached :photo
 
-  def mentorship
-    Meeting.where('student_id = ? OR mentor_id = ?', id, id)
-  end
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
