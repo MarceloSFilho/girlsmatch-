@@ -25,7 +25,6 @@ class MentorshipsController < ApplicationController
     else
       redirect_to profile_path, alert: "Solicitação já enviada"
     end
-    # para criar a mentoria o estudante faz uma requisição(proposal) para o mentor -> responsabilidade do botão submmi
   end
 
   def my_proposals
