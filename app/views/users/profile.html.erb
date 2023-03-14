@@ -1,21 +1,25 @@
-<h1>Meu Perfil</h1>
 
+<div class="container">
 
-<%= link_to "My proposals", my_proposals_path, class:"btn btn-primary" %><br />
+  <h1>Meu Perfil</h1>
 
-<% if current_user.student %>
-  <%= link_to "Choose a mentor", mentorships_path, class:"btn btn-primary" %><br />
-<% end %>
+  <%= link_to "My proposals", my_proposals_path, class:"btn btn-primary" %><br />
 
-<% if current_user.mentor %>
-  <%= link_to "My skills", new_skill_path, class:"btn btn-primary" %><br />
+  <% if current_user.student %>
+    <%= link_to "Choose a mentor", mentorships_path, class:"btn btn-primary" %><br />
+  <% end %>
+
+  <% if current_user.mentor %>
+    <%= link_to "My skills", new_skill_path, class:"btn btn-primary" %><br />
+
   <% if @user.skills.present? %>
-  <ul>
-  <% @user.skills.each do |skill| %>
-  <li><%= skill.language %><%= button_to "delete skill", skill_path(skill), method: :delete %></li>
-  <% end %>
-  </ul>
+    <ul>
+    <% @user.skills.each do |skill| %>
+    <li><%= skill.language %><%= button_to "delete skill", skill_path(skill), method: :delete %></li>
+    <% end %>
+    </ul>
   <% else %>
-      <h2>You do not have any skills set yet</h2>
+      <h2 class="sign">You do not have any skills set yet</h2>
   <% end %>
-<% end %>
+  <% end %>
+</div>
