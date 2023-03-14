@@ -1,8 +1,17 @@
-<div class="container">
-  <h1 class="sign">USER PAGE</h1>
 
-  <%= link_to "Choose a mentor", mentorships_path, class:"btn-default-big" %><br />
-  <%= link_to "My proposals", my_proposals_path, class:"btn-default-big" %><br />
+<div class="container">
+
+  <h1>Meu Perfil</h1>
+
+  <%= link_to "My proposals", my_proposals_path, class:"btn btn-primary" %><br />
+
+  <% if current_user.student %>
+    <%= link_to "Choose a mentor", mentorships_path, class:"btn btn-primary" %><br />
+  <% end %>
+
+  <% if current_user.mentor %>
+    <%= link_to "My skills", new_skill_path, class:"btn btn-primary" %><br />
+    
   <% if @user.skills.present? %>
   <ul>
   <% @user.skills.each do |skill| %>
