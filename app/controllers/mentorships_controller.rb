@@ -3,7 +3,11 @@ class MentorshipsController < ApplicationController
 
 
   def index
-    @mentors = User.where('mentor' => true)
+    if params[:query].present?
+      @mentors = User.search_by_name_and_language(params[:query])
+    else
+      @mentors = User.where(mentor: true)
+    end
   end
 
   def new
