@@ -1,3 +1,13 @@
+
+<%= form_with url: mentorships_path, method: :get, class: "d-flex" do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a mentor or "
+  %>
+  <%= submit_tag "Search", class: "btn-default" %>
+<% end %>
+
 <% @mentors.each do |mentor| %>
-  <%= link_to mentor.username, user_path(mentor)  %>
+<%= link_to mentor.username, user_path(mentor)  %>
 <% end %>

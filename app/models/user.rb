@@ -3,6 +3,15 @@ class User < ApplicationRecord
   has_many :mentor_mentorships, class_name: 'Mentorships', foreign_key: 'mentor_id'
   has_many :skills, dependent: :destroy
   has_one_attached :photo
+  include PgSearch::Model
+
+  pg_search_scope :search_by_name_and_language,
+  against: [ :username, :first_name, :last_name],
+   associated_against:
+    { skills: [ :language ] },
+    using: {
+      tsearch: { prefix: true }
+    }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
