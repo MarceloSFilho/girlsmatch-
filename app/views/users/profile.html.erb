@@ -11,16 +11,15 @@
 
   <% if current_user.mentor %>
     <%= link_to "My skills", new_skill_path, class:"btn btn-primary" %><br />
-    
+
   <% if @user.skills.present? %>
-  <ul>
-  <% @user.skills.each do |skill| %>
-  <li><%= skill.language %><%= button_to "delete skill", skill_path(skill), method: :delete %></li>
-  <% end %>
-  </ul>
+    <ul>
+    <% @user.skills.each do |skill| %>
+    <li><%= skill.language %><%= button_to "delete skill", skill_path(skill), method: :delete %></li>
+    <% end %>
+    </ul>
   <% else %>
       <h2 class="sign">You do not have any skills set yet</h2>
   <% end %>
-
+  <% end %>
 </div>
-
