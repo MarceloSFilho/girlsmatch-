@@ -6,6 +6,8 @@
 <% if current_user.student %>
   <%= link_to "Choose a mentor", mentorships_path, class:"btn btn-primary" %><br />
 <% end %>
+
+
 <% if current_user.mentor %>
   <%= link_to "My skills", new_skill_path, class:"btn btn-primary" %><br />
   <% if @user.skills.present? %>

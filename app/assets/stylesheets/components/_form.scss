@@ -1,0 +1,31 @@
+.form-label {
+  display: inline-block;
+  margin-bottom: 10px;
+  background: whitesmoke;
+  position: absolute;
+  transform: translate(30px, -10px);
+  padding: 0 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.form-control {
+  border: 5px solid black;
+  border-radius: 20px;
+  width: 400px;
+}
+
+.form-actions {
+  display: inline-flex;
+}
+
+.form-check-label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.form-check-input {
+  border: 5px solid black;
+  padding: 5px;
+  border-radius: 10px;
+}

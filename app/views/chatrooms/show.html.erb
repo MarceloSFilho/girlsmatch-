@@ -7,6 +7,8 @@
     <% end %>
   </div>
 
+<!-- se a mentorship(ter no controler de show) do current user estiver com o completed -> true não manda mais mensagem -->
+
 <%= simple_form_for [@chatroom, @message], remote: true, html: {class: "d-flex", data: { chatroom_subscription_target: 'form', action: "turbo:submit-end->chatroom-subscription#resetForm" } } do |f| %>
   <%= f.input :content,
     label: false,
