@@ -15,7 +15,7 @@
           <% if current_user.photo.attached? %>
           <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% else %>
-          <%= image_tag "https://www.promoview.com.br/uploads/images/unnamed%2819%29.png" %>
+          <%= image_tag "https://www.promoview.com.br/uploads/images/unnamed%2819%29.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Perfil", profile_path, class: "dropdown-item" %>
