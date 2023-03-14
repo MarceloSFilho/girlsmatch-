@@ -1,6 +1,6 @@
-<h1>My proposals</h1>
-
-<%= current_user.username %>
+<h1>
+<%= current_user.username %>, você recebeu propostas de: 
+</h1>
 
 <% @mentorships.each do |mentorship| %>
   <% if current_user.student %>

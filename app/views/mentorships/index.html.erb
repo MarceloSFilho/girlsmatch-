@@ -1,3 +1,14 @@
-<% @mentors.each do |mentor| %>
-  <%= link_to mentor.username, user_path(mentor)  %>
-<% end %>
+<div>
+  <% @mentors.each do |mentor| %>
+    <div class='container'>
+      <ul>
+      <li><%= mentor.username  %></li>
+      </ul>
+      <% if mentor.available %>
+      <%= link_to "Venha ser minha mentorada!", user_path(mentor) %>
+      <% else %>
+      <%= "Não estou disponivel no momento." %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
