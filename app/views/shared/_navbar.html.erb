@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand" do %>
      <p>girls.match()</p>
     <% end %>
 
@@ -12,7 +12,7 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "Mensagens", "#", class: "nav-link" %>
+            <%= link_to "Meu Perfil", profile_path, class: "nav-link" %>
           </li>
           <p class="vertical-bar">|</p>
           <li class="nav-item active">
@@ -20,7 +20,7 @@
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "Cadastrar-se", "#" , class: "nav-link" %>
+            <%= link_to "Junte-se a nós", new_user_registration_path , class: "nav-link" %>
           </li>
           <p class="vertical-bar">|</p>
           <li class="nav-item">
