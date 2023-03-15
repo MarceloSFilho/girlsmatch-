@@ -1,0 +1,38 @@
+.container {
+  $body-font: "Work Sans", "Helvetica", "sans-serif";
+}
+
+.instructions {
+  h2 {
+    font-size: 17px;
+    text-align: center;
+    font-weight: bolder;
+  }
+  font-size: 14px;
+  margin: 75px auto;
+  text-align: justify;
+}
+
+.btn-instructions {
+  margin: 30px auto;
+}
+
+.skill-info {
+  ul {
+    padding-left: 0rem;
+  }
+
+  li {
+    list-style: none;
+    display: inline-block;
+    text-align: center;
+  }
+}
+
+.card-img {
+  img {
+    width: 217px;
+    height: 209px;
+    border-radius: 12px;
+  }
+}
