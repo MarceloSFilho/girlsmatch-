@@ -1,28 +1,23 @@
 <div class="container text-center">
-    <div class="row">
-      <div class="card-view col-6">
-        <div class="card-img">
+  <div class="row">
+    <div class="card-view col-6">
+      <div class="card-img">
           <% if current_user.photo.attached? %>
           <%= cl_image_tag current_user.photo.key, class: "avatar", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% else %>
           <%= image_tag "https://www.promoview.com.br/uploads/images/unnamed%2819%29.png", class: "avatar-profile", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% end %>
-        </div>
-
-        <div class="skill-info card-infos">
-            <% if @user.skills.present? %>
-              <ul>
-                <% @user.skills.each do |skill| %>
-                <li><%= skill.language %></li>
-                <% end %>
-              </ul>
+      </div>
+      <div class="skill-info card-infos">
+          <% if @user.skills.present? %>
+            <ul>
+            <% @user.skills.each do |skill| %>
+            <li><%= skill.language %></li>
             <% end %>
+            </ul>
+          <% end %>
         </div>
-       </div>
-
-<div class="container">
-  <h1>Meu Perfil</h1>
-
+      </div>
     <div class="container instructions col-5">
       <h2>Instruções</h2>
 
@@ -37,31 +32,21 @@
 
           Olá! É muito bom te ver por aqui! Lembra daquele frio na barriga que todos nós temos quando iniciamos uma carreira? Pois é, aqui estamos rodeadas de mulheres passando por este processo! Vamos contribuir para que Desenvolvedoras Junior dêem os melhores passos em direção a uma carreira de sucesso! Não se esqueça: paciência e empatia são primordiais neste processo, por isso seja gentil com as inseguranças da sua mentorada. Lembre-se, você só pode aceitar um convite por vez, e só ficará disponivel novamente assim que a mentoria for completada. Vamos construir uma comunidade de mulheres na tecnologia!</p>
         </p>
+      </div>
     </div>
 
-      <div class="row">
-      <div class="col">
+  <div class="row">
+    <div class="col">
         <%= link_to "My proposals", my_proposals_path, class:"btn-instructions btn-default-big" %>
-      </div>
-      <div class="col">
+    </div>
+    <div class="col">
         <% if current_user.student %>
           <%= link_to "Choose a mentor", mentorships_path, class:"btn-instructions btn-default-big" %>
         <% end %>
         <% if current_user.mentor %>
           <%= link_to "My skills", new_skill_path, class:"btn-instructions btn-default" %>
         <% end %>
-      </div>
-        </div>
     </div>
-
-    <% if @user.skills.present? %>
-      <ul>
-        <% @user.skills.each do |skill| %>
-          <li><%= skill.language %><%= button_to "delete skill", skill_path(skill), method: :delete %></li>
-        <% end %>
-      </ul>
-    <% else %>
-      <h2 class="sign">You do not have any skills set yet</h2>
-    <% end %>
-  <% end %>
+  </div>
+  </div>
 </div>
