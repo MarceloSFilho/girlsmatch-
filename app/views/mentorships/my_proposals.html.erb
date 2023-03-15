@@ -1,6 +1,4 @@
-<h1>
-<%= current_user.username %>, você recebeu propostas de: 
-</h1>
+<h1> Seus convites </h1>
 
 <% @mentorships.each do |mentorship| %>
   <% if current_user.student %>
@@ -10,8 +8,13 @@
     <%= link_to "Abrir chat", chatroom_path(chatroom) if mentorship.accepted %>
   <% else %>
     <%= mentorship.student.username %>
-    <%= mentorship.completed %>
-    <%= mentorship.accepted %>
-    <%= link_to "Aceitar", mentorship_path(mentorship), data: { "turbo_method": :patch} %>
+      <% if mentorship.completed == false %>
+        <%= link_to "Aceitar", mentorship_path(mentorship), data: { "turbo_method": :patch}, class: "btn-default" %>
+      <% else %>
+        <%= "Essa estudante já aceitou outro convite." %>
+      <% end %>
+      <% mentorship.accepted %>
   <% end %>
 <% end %>
+
+<%= link_to "Voltar", profile_path, class: "btn-default btn-skills" %>

@@ -37,14 +37,14 @@
 
   <div class="row">
     <div class="col">
-        <%= link_to "My proposals", my_proposals_path, class:"btn-instructions btn-default-big" %>
+        <%= link_to "Convites", my_proposals_path, class:"btn-instructions btn-default-big" %>
     </div>
     <div class="col">
         <% if current_user.student %>
-          <%= link_to "Choose a mentor", mentorships_path, class:"btn-instructions btn-default-big" %>
+          <%= link_to "Encontre uma mentora", mentorships_path, class:"btn-instructions btn-default-big" %>
         <% end %>
         <% if current_user.mentor %>
-          <%= link_to "My skills", new_skill_path, class:"btn-instructions btn-default" %>
+          <%= link_to "Skills", new_skill_path, class:"btn-instructions btn-default" %>
         <% end %>
     </div>
   </div>
