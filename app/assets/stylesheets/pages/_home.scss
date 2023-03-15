@@ -1,6 +1,4 @@
-.body {
-  background: snow;
-}
+
 .logo-body {
   margin: 0;
   padding: 25px;
@@ -13,4 +11,11 @@
 .slogan {
   font-family: $font-body;
   font-weight: bold;
+}
+
+body {
+  background: snow;
+  min-height: 100vh !important;
+  display: flex;
+  flex-direction: column;
 }
