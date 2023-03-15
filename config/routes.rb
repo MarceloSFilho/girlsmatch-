@@ -11,17 +11,9 @@ Rails.application.routes.draw do
   get "mentorships", to: "mentorships#index"
   get "my_proposals", to: "mentorships#my_proposals"
 
-
   resources :users do
     resources :mentorships, only: :create
   end
   resources :mentorships, only: :update
   resources :skills
 end
-
-
-# get "/users/:id", to: "users#show", as: "users" do
-#  get "/users/:user_id/mentorships/new", to: "mentorships#new", as: "mentorships"
-# end
-
-#
