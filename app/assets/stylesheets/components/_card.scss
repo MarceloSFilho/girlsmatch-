@@ -1,29 +1,50 @@
 .card-view {
   background: $yellow-g;
-  margin: 75px auto;
-  height: 400px;
+  margin: 75px 0;
+  height: 460px;
   width: 300px;
   border: 5px solid black;
   border-radius: 20px;
   box-shadow: 30px 30px 0 grey;
+
 }
 
 .card-view .card-img {
   width: 230px;
   background: white;
-  height: 220px;
+  height: 180px;
   margin: 30px auto;
   border: 5px solid black;
   border-radius: 20px;
 }
 
+.card-view .card-img img {
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+  border-radius: 15px;
+}
+
 .card-infos {
   background: white;
-  height: 75px;
+  height: 180px;
   width: 230px;
   margin: 0 auto;
   border: 5px solid black;
   border-radius: 20px;
+  text-align: center;
+}
+
+.card-infos .p {
+  font-weight: bold;
+  margin: 0;
+  font-family: $font-header-form;
+  font-size: 20px;
+}
+.card-infos .h3 {
+  font-weight: bold;
+  margin: 10px;
+  font-family: $font-header-form;
+  font-size: 40px;
 }
 
 .card-infos-home {
@@ -31,9 +52,7 @@
   padding: 50px;
   background: $blue-g;
   width: 410px;
-  height: 50px;
   display: flex;
-  box-shadow: 30px 30px 0 grey;
   align-items: center;
   border: 5px solid black;
   border-radius: 20px;
@@ -43,4 +62,40 @@
     font-family: $font-body;
     margin: 0;
   }
+}
+
+.flower {
+  width: 380px;
+}
+
+.depositions {
+  margin: 60px;
+  text-align: center;
+}
+
+.balloon {
+  width: 270px;
+  margin: 75px 0 10px;
+}
+
+.cards-depositions {
+  height: 200px;
+  width: 200px;
+  border: 5px solid black;
+  border-radius: 20px;
+  margin: 0 75px;
+}
+
+.card-picture {
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+  border-radius: 15px;
+}
+
+.p-balloon {
+  position: absolute;
+  margin: 125px 0px 0px 100px;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: $font-header-form;
 }
