@@ -1,30 +1,32 @@
 
 
-<%= form_with url: mentorships_path, method: :get, class: "d-flex" do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a mentor or "
-  %>
-  <%= submit_tag "Search", class: "btn-default" %>
-<% end %>
+<div class="container search-container">
+  <%= form_with url: mentorships_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a mentor or "
+    %>
+    <%= submit_tag "Search", class: "btn-default" %>
+  <% end %>
+</div>
 
-<% @mentors.each do |mentor| %>
-<%= link_to mentor.username, user_path(mentor)  %>
-<% end %>
-
-<div>
+<div class="mentors">
   <% @mentors.each do |mentor| %>
-    <div class='container'>
+    <div class="mentors-card">
       <ul>
-      <li><%= mentor.username  %></li>
+        <li><%= mentor.username  %>
+          <div class="card-buttons">
+            <% if mentor.available %>
+            <p><%= link_to "Ver perfil!", user_path(mentor), class: "btn-default-big" %></p>
+            <% else %>
+            <p><%= "Mentora não disponível" %></p>
+            <% end %>
+          </div>
+        </li>
       </ul>
-      <% if mentor.available %>
-      <%= link_to "Venha ser minha mentorada!", user_path(mentor) %>
-      <% else %>
-      <%= "Não estou disponivel no momento." %>
-      <% end %>
     </div>
   <% end %>
 </div>
 
+<%= link_to "Voltar", profile_path, class: "btn-default btn-skills" %>
