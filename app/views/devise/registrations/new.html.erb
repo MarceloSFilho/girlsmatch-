@@ -19,6 +19,7 @@
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
       <%= f.input :photo, as: :file %>
+      <%= f.input :description %>
     </div>
     <%- if controller_name != 'sessions' %>
       <%= f.button :submit, "Cadastrar", class:"btn-default-sign" %>
