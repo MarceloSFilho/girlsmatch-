@@ -23,6 +23,7 @@
                   required: true,
                   input_html: { autocomplete: "current-password" } %>
       <%= f.input :photo, as: :file %>
+      <%= f.input :description %>
       <%# if current_user.mentor %>
         <%= f.simple_fields_for :skills do |s| %>
           <%= s.input :language, collection: Skill::LANGUAGES %>
