@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   resources :users do
     resources :mentorships, only: :create
   end
-  resources :mentorships, only: :update
+  resources :mentorships, only: [:update, :destroy]
   resources :skills
 end

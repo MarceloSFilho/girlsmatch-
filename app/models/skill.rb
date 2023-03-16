@@ -20,4 +20,12 @@ class Skill < ApplicationRecord
     "Rust",
     "Dart",
     "CSS"]
+    validates :language, uniqueness: {scope: :user}
+    validate :less_than_three
+
+  def less_than_three
+    if Skill.where(user: user).count >= 3
+      errors.add(:language, "Maximo tres linguagens")
+    end
+  end
 end
