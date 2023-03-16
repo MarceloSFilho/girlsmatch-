@@ -14,8 +14,10 @@
 <div class="mentors">
   <% @mentors.each do |mentor| %>
     <div class="mentors-card">
+      <div class="card-img">
+      </div>
       <ul>
-        <li><%= mentor.username  %>
+        <li><%= mentor.username.capitalize  %>
           <div class="card-buttons">
             <% if mentor.available %>
             <p><%= link_to "Ver perfil!", user_path(mentor), class: "btn-default-big" %></p>

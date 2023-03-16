@@ -1,20 +1,29 @@
-<h1> Seus convites </h1>
+<h1 style="text-align: center"> Seus convites </h1>
 
-<% @mentorships.each do |mentorship| %>
-  <% if current_user.student %>
-    <% chatroom = Chatroom.find_by(student: current_user, mentor: mentorship.mentor) %>
-    <%= mentorship.mentor.username %>
-    <%= mentorship.completed %>
-    <%= link_to "Abrir chat", chatroom_path(chatroom) if mentorship.accepted %>
-  <% else %>
-    <%= mentorship.student.username %>
-      <% if mentorship.completed == false %>
-        <%= link_to "Aceitar", mentorship_path(mentorship), data: { "turbo_method": :patch}, class: "btn-default" %>
-      <% else %>
-        <%= "Essa estudante já aceitou outro convite." %>
-      <% end %>
-      <% mentorship.accepted %>
+<div class="container">
+  <% @mentorships.each do |mentorship| %>
+    <% if current_user.student %>
+      <% chatroom = Chatroom.find_by(student: current_user, mentor: mentorship.mentor) %>
+      <%= mentorship.mentor.username.capitalize %>
+      <%= link_to "Abrir chat", chatroom_path(chatroom) if mentorship.accepted %>
+    <% else %>
+      <div class="card-view">
+      <p><%= mentorship.student.username.capitalize %></p>
+      <div class="card-img">
+      </div>
+        <div class="card-infos">
+        <%= mentorship.student.description %>
+        </div>
+            <%= link_to "Aceitar", mentorship_path(mentorship), data: { "turbo_method": :patch }, class: "btn-default" %>
+            <%= link_to "Rejeitar", mentorship_path(mentorship), data: { "turbo_method": :delete, turbo_confirm: "Deseja realmente finalizar?" }, class: "btn-default"  %>
+
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>
 
-<%= link_to "Voltar", profile_path, class: "btn-default btn-skills" %>
+<div class="container">
+
+  <%= link_to "Voltar", profile_path, class: "btn-default btn-skills" %>
+
+</div>
