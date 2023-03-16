@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h2 class="sign"><%= @user.username.capitalize %></h2>
+      <div class="description-card">
+        <%= @user.description %>
+      </div>
+    </div>
+    <div class="card-view col-6">
+      <div class="card-img">
+          <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, class: "avatar", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% else %>
+          <%= image_tag "https://www.promoview.com.br/uploads/images/unnamed%2819%29.png", class: "avatar-profile", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
+      </div>
+      <div class=" card-infos">
+          <% if @user.skills.present? %>
+            <ul>
+            <% @user.skills.each do |skill| %>
+            <li><%= skill.language %></li>
+            <% end %>
+            </ul>
+          <% end %>
+      </div>
+    </div>
+    <div>
+    <%= link_to "Voltar", mentorships_path, class: "btn-default" %>
+    <%= link_to "Choose this mentor", user_mentorships_path(@user), data: { "turbo_method": :post }, class:"btn-default-big" %>
+    </div>
+  </div>
+</div>
