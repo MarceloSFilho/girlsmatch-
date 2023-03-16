@@ -1,5 +1,5 @@
 class MentorshipsController < ApplicationController
-  before_action :set_mentorship, only: :update
+  before_action :set_mentorship, only: [:update, :destroy]
 
  def index
     if params[:query].present?
@@ -46,7 +46,11 @@ class MentorshipsController < ApplicationController
   end
 
   def destroy
-    @mentorship = Mentorship.find(set_mentorship)
+    mentor = @mentorship.mentor
+    student = @mentorship.student
+    name = "#{mentor.username} x #{student.username}"
+    @chatroom = Chatroom.find_or_create_by!(student: student, mentor: mentor, name: name)
+    @chatroom.destroy
     @mentorship.destroy
     redirect_to my_proposals_path
   end
