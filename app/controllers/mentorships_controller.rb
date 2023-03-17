@@ -5,7 +5,7 @@ class MentorshipsController < ApplicationController
     if params[:query].present?
       @mentors = User.search_by_name_and_language(params[:query])
     else
-      @mentors = User.where(mentor: true)
+      @mentors = User.where(student: false)
     end
   end
 
