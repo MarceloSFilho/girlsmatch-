@@ -1,23 +1,30 @@
-.search-container {
-  text-align: center;
+.card-mentors {
+  background: $yellow-g;
+  margin: 75px 76px;
+  height: 387px;
+  width: 300px;
+  border: 5px solid black;
+  border-radius: 20px;
+  align-items: center;
+  p {
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+  }
 }
 
-.mentors {
-  text-align: center;
-}
-
-.mentors-card {
-    background: #F9DB6D;
-    margin: 10px auto;
-    height: 323px;
-    width: 239px;
+.user-img {
+    width: 230px;
+    height: 180px;
+    margin: 30px auto;
     border: 5px solid black;
     border-radius: 20px;
-    display: inline-block;
-    li {
-     list-style: none;
-     text-align: center;
-    }
+    background-size: cover;
+    background-position: center;
 }
 
-
+.choose-foto {
+      width: 217px;
+      height: 209px;
+      border-radius: 12px;
+}

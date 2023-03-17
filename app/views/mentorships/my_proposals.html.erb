@@ -1,29 +1,30 @@
 <h1 style="text-align: center"> Seus convites </h1>
 
-<div class="container">
-  <% @mentorships.each do |mentorship| %>
-    <% if current_user.student %>
-      <% chatroom = Chatroom.find_by(student: current_user, mentor: mentorship.mentor) %>
-      <%= mentorship.mentor.username.capitalize %>
-      <%= link_to "Abrir chat", chatroom_path(chatroom) if mentorship.accepted %>
-    <% else %>
-      <div class="card-view">
-      <p><%= mentorship.student.username.capitalize %></p>
-      <div class="card-img">
-      </div>
-        <div class="card-infos">
-        <%= mentorship.student.description %>
-        </div>
-            <%= link_to "Aceitar", mentorship_path(mentorship), data: { "turbo_method": :patch }, class: "btn-default" %>
-            <%= link_to "Rejeitar", mentorship_path(mentorship), data: { "turbo_method": :delete, turbo_confirm: "Deseja realmente finalizar?" }, class: "btn-default"  %>
 
+<div class="row">
+  <% @mentorships.each do |mentorship| %>
+    <div class="card-mentors col-4 d-flex flex-column">
+      <% if current_user.student %>
+        <% chatroom = Chatroom.find_by(student: current_user, mentor: mentorship.mentor) %>
+        <p><%= mentorship.mentor.username.capitalize %></p>
+        <% image_url =  mentorship.mentor.photo.attached? ? cl_image_path(mentorship.mentor.photo.key) : "https://www.promoview.com.br/uploads/images/unnamed%2819%29.png" %>
+        <div class="user-img" style="background-image: url('<%= image_url %>');"></div>
+        <%= link_to "Abrir chat", chatroom_path(chatroom), class: "btn-default-big" if mentorship.accepted %>
       </div>
+
+      <% else %>
+        <p><%= mentorship.student.username.capitalize %></p>
+        <% image_url =  mentorship.mentor.photo.attached? ? cl_image_path(mentorship.mentor.photo.key) : "https://www.promoview.com.br/uploads/images/unnamed%2819%29.png" %>
+        <div class="user-img" style="background-image: url('<%= image_url %>');"></div>
+
+        <div class="butao">
+          <%= link_to "Aceitar", mentorship_path(mentorship), data: { "turbo_method": :patch }, class: "btn-default" %>
+          <%= link_to "Rejeitar", mentorship_path(mentorship), data: { "turbo_method": :delete, turbo_confirm: "Deseja realmente finalizar?" }, class: "btn-default"  %>
+        </div>
+   </div>
     <% end %>
-  <% end %>
+    <% end %>
 </div>
 
-<div class="container">
 
   <%= link_to "Voltar", profile_path, class: "btn-default btn-skills" %>
-
-</div>
