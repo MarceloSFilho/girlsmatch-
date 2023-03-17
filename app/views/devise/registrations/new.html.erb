@@ -4,8 +4,12 @@
     <%= f.error_notification %>
 
     <div class="form-inputs">
-      <%= f.input :mentor,     as: :boolean %>
-      <%= f.input :student,    as: :boolean %>
+      <%= f.input :student,
+                  label: "",
+                  as: :radio_buttons,
+                  collection: [["1", "student"], ["0", "mentor"]],
+                  label_method: :second,
+                  value_method: :first  %>
       <%= f.input :username                 %>
       <%= f.input :email,
                   required: true,
