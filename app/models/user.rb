@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_one_attached :photo
   validates :description, length: { maximum: 300 }
   validates :student, inclusion: [true, false]
+  validates :username, presence: true, uniqueness: true
   include PgSearch::Model
 
   pg_search_scope :search_by_name_and_language,
@@ -16,7 +17,7 @@ class User < ApplicationRecord
     }
 
   accepts_nested_attributes_for :skills, update_only: true
-    
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

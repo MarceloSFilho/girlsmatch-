@@ -20,14 +20,14 @@
       </div>
     <div class="container instructions col-5">
       <h2>Instruções</h2>
-      <% if current_user.mentor %>
+      <% if current_user.mentor? %>
         <p>
           <strong>Mentora:</strong>
 
           Olá! É muito bom te ver por aqui! Lembra daquele frio na barriga que todos nós temos quando iniciamos uma carreira? Pois é, aqui estamos rodeadas de mulheres passando por este processo! Vamos contribuir para que Desenvolvedoras Junior dêem os melhores passos em direção a uma carreira de sucesso! Não se esqueça: paciência e empatia são primordiais neste processo, por isso seja gentil com as inseguranças da sua mentorada. Lembre-se, você só pode aceitar um convite por vez, e só ficará disponivel novamente assim que a mentoria for completada. Vamos construir uma comunidade de mulheres na tecnologia!</p>
         </p>
       <% end %>
-      <% if current_user.student %>
+      <% if current_user.student? %>
         <p>
           <strong>Estudante:</strong>
 
