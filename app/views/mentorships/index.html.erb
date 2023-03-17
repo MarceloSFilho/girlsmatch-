@@ -5,22 +5,26 @@
     <%= text_field_tag :query,
       params[:query],
       class: "form-control",
-      placeholder: "Find a mentor or "
+      placeholder: "Busque por linguagem"
     %>
     <%= submit_tag "Search", class: "btn-default" %>
   <% end %>
 </div>
 
-  <% @mentors.each do |mentor| %>
-
-        <%= mentor.username.capitalize  %>
-            <% if mentor.available %>
-            <p><%= link_to "Ver perfil!", user_path(mentor), class: "btn-default-big" %></p>
-            <% else %>
-            <p><%= "Mentora não disponível" %></p>
-            <% end %>
-
-
-  <% end %>
+  <div class="row">
+    <% @mentors.each do |mentor| %>
+      <div class="card-mentors col-4 d-flex flex-column">
+        <p><%= mentor.username.capitalize  %></p>
+        <% image_url =  mentor.photo.attached? ? cl_image_path(mentor.photo.key) : "https://www.promoview.com.br/uploads/images/unnamed%2819%29.png" %>
+        <div class="user-img" style="background-image: url('<%= image_url %>');">
+        </div>
+          <% if mentor.available %>
+            <%= link_to "Ver perfil!", user_path(mentor), class: "btn-default-big mx-auto" %>
+          <% else %>
+            <p>Mentora não disponível</p>
+          <% end %>
+      </div>
+    <% end %>
+  </div>
 
 <%= link_to "Voltar", profile_path, class: "btn-default btn-skills" %>
