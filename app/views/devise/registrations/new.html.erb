@@ -1,29 +1,36 @@
 <div class="container">
-  <h2 class="sign">Sign-up</h2>
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
-    <%= f.error_notification %>
+  <h2 class="sign">Cadastrar-se</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
+        <%= f.error_notification %>
 
-    <div class="form-inputs">
-      <%= f.input :mentor,     as: :boolean %>
-      <%= f.input :student,    as: :boolean %>
-      <%= f.input :username                 %>
-      <%= f.input :email,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" }%>
-      <%= f.input :password,
-                  required: true,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
-                  required: true,
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :photo, as: :file %>
-      <%= f.input :description %>
+        <div class="form-inputs">
+          <%= f.input :mentor,     as: :boolean %>
+          <%= f.input :student,    as: :boolean %>
+          <%= f.input :username                 %>
+          <%= f.input :email,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" }%>
+          <%= f.input :password,
+                      required: true,
+                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password_confirmation,
+                      required: true,
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :photo, as: :file %>
+          <%= f.input :description %>
+        </div>
+        <%- if controller_name != 'sessions' %>
+          <%= f.button :submit, "Cadastrar", class:"btn-default-big" %>
+        <% end %>
+      <% end %>
     </div>
-    <%- if controller_name != 'sessions' %>
-      <%= f.button :submit, "Cadastrar", class:"btn-default-sign" %>
-    <% end %>
-  <% end %>
+    <div class="col-md-6">
+      <% image_tag "/assets/images/caneco.png", class:"caneco" %>
+    </div>
+  </div>
   <%= render "devise/shared/links" %>
 </div>
