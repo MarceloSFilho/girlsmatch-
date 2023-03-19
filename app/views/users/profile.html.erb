@@ -1,30 +1,36 @@
 <div class="container text-center">
   <div class="row">
-    <div class="card-view col-6">
+    <div class="card-view col-md-6">
       <% image_url =  current_user.photo.attached? ? cl_image_path(current_user.photo.key) : "https://www.promoview.com.br/uploads/images/unnamed%2819%29.png" %>
         <div class="user-img" style="background-image: url('<%= image_url %>');"></div>
       <div class="skill-info card-infos">
           <% if @user.skills.present? %>
-            <ul>
+            <h1 class="h1-name"><%= current_user.username %></h1>
+            <ul class="ul-style">
             <% @user.skills.each do |skill| %>
-            <li><%= skill.language %></li>
+            <li><%= skill.language %></li> <br>
             <% end %>
             </ul>
           <% end %>
         </div>
       </div>
-    <div class="container instructions col-5">
-      <h2>Instruções</h2>
+    <div class="col-md-6">
+      <h2 class="h2-mt">Instruções</h2>
       <% if current_user.mentor? %>
-        <p>
-          <strong>Mentora:</strong>
+        <p class="p-bold">
+          MENTORA:
+        </p>
+
+        <p class="ta-center">
 
           Olá! É muito bom te ver por aqui! Lembra daquele frio na barriga que todos nós temos quando iniciamos uma carreira? Pois é, aqui estamos rodeadas de mulheres passando por este processo! Vamos contribuir para que Desenvolvedoras Junior dêem os melhores passos em direção a uma carreira de sucesso! Não se esqueça: paciência e empatia são primordiais neste processo, por isso seja gentil com as inseguranças da sua mentorada. Lembre-se, você só pode aceitar um convite por vez, e só ficará disponivel novamente assim que a mentoria for completada. Vamos construir uma comunidade de mulheres na tecnologia!</p>
         </p>
       <% end %>
       <% if current_user.student? %>
-        <p>
-          <strong>Estudante:</strong>
+        <p class="p-bold">
+          ESTUDANTE:
+        </p>
+        <p class="ta-center">
 
           Bem vinda! É muito bom te ver por aqui! Queremos que você tenha a melhor experiência possível e alcançe seus objetivos com clareza e assertividade. Para isso, você pode escolher uma mentora através da lista disponível. Você pode enviar apenas um convite por mentora, caso ela aceite ambas só estarão disponíveis para novas mentorias após esta ser completada. Boa jornada! Vamos construir uma comunidade de mulheres na tecnologia!
         </p>
@@ -42,7 +48,7 @@
           <%= link_to "Encontre uma mentora", mentorships_path, class:"btn-instructions btn-default-big" %>
         <% end %>
         <% if current_user.mentor? %>
-          <%= link_to "Skills", new_skill_path, class:"btn-instructions btn-default" %>
+          <%= link_to "Habilidades", new_skill_path, class:"btn-instructions btn-default-big" %>
         <% end %>
     </div>
   </div>

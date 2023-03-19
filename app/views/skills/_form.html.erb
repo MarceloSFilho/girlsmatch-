@@ -1,4 +1,4 @@
  <%= simple_form_for(@skill) do |f| %>
   <%= f.input :language, collection: Skill::LANGUAGES, include_blank: false %>
-  <%= f.button :submit, "Adicionar", class:"btn-default" %>
+  <%= f.button :submit, "Adicionar", class:"btn-default-update" %>
 <% end %>

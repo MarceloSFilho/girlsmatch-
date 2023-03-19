@@ -67,3 +67,39 @@
     background: #475083;
   }
 }
+
+.btn-default-delete {
+  color: white;
+  background: rgb(247, 51, 51);
+  border: 5px solid black;
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 10px;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  height: 50px;
+  font-weight: bolder;
+  &:hover {
+    color: rgb(13, 13, 13);
+    background: rgb(253, 65, 65);
+  }
+}
+
+.btn-default-update {
+  color: white;
+  background: rgb(65, 222, 65);
+  border: 5px solid black;
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 10px;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  height: 50px;
+  font-weight: bolder;
+  &:hover {
+    color: rgb(13, 13, 13);
+    background: rgb(83, 206, 83);
+  }
+}

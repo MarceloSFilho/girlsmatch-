@@ -7,7 +7,7 @@
     <ul class="skill-bold">
       <% current_user.skills.each do |skill| %>
               <li><%= skill.language %>
-                  <%= button_to "Excluir skill", skill_path(skill), method: :delete, class: "btn-default-big" %>
+                  <%= button_to "Excluir skill", skill_path(skill), method: :delete, class: "btn-default-delete" %>
               </li>
       <% end %>
     </ul>
