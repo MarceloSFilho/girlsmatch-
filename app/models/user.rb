@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :skills, dependent: :destroy
   has_one_attached :photo
   validates :description, length: { maximum: 300 }
+  validates :username, length: { maximum: 16 }
   validates :student, inclusion: [true, false]
   validates :username, presence: true, uniqueness: true
   include PgSearch::Model
