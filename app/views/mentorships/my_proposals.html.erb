@@ -15,7 +15,7 @@
 
         <% else %>
           <p><%= mentorship.student.username.capitalize %></p>
-          <% image_url =  mentorship.mentor.photo.attached? ? cl_image_path(mentorship.mentor.photo.key) : "https://www.promoview.com.br/uploads/images/unnamed%2819%29.png" %>
+          <% image_url =  mentorship.student.photo.attached? ? cl_image_path(mentorship.student.photo.key) : "https://www.promoview.com.br/uploads/images/unnamed%2819%29.png" %>
           <div class="user-img" style="background-image: url('<%= image_url %>');"></div>
 
           <div class="butao">
