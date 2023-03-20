@@ -8,7 +8,7 @@
     <%= submit_tag "🔎", class: "s-style-buttom" %>
   <% end %>
 
-  <div class="row">
+  <div class="row jc-center">
     <% @mentors.each do |mentor| %>
       <div class="card-mentors col-4 d-flex flex-column">
         <p><%= mentor.username.capitalize  %></p>
