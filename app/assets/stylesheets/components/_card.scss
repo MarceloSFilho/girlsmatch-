@@ -75,6 +75,7 @@
   font-weight: bold;
   list-style: none;
   padding: 0px;
+  padding-top: 40px;
 }
 
 .h1-name {
@@ -103,8 +104,10 @@
   width: 450px;
 }
 
-.cup {
-  width: 510px;
+.girl {
+  width: 299px;
+  margin-top: -100px;
+  margin-left: 100px
 }
 
 .img-senha {
@@ -200,4 +203,8 @@
   
 .jc-center {
   justify-content: center;
+}
+
+.mt-100px {
+  margin-top: 200px;
 }
