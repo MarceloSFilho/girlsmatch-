@@ -1,14 +1,12 @@
 
-<div class="container search-container">
-  <%= form_with url: mentorships_path, method: :get, class: "d-flex" do %>
+<div class="container">
+  <%= form_with url: mentorships_path, method: :get, class:"align-form-center" do %>
     <%= text_field_tag :query,
       params[:query],
-      class: "form-control",
-      placeholder: "Busque por linguagem"
+      placeholder: "Buscar por linguagem"
     %>
-    <%= submit_tag "Search", class: "btn-default" %>
+    <%= submit_tag "🔎", class: "s-style-buttom" %>
   <% end %>
-</div>
 
   <div class="row">
     <% @mentors.each do |mentor| %>
@@ -25,5 +23,5 @@
       </div>
     <% end %>
   </div>
-
-<%= link_to "Voltar", profile_path, class: "btn-default btn-skills" %>
+  <%= link_to "Voltar", profile_path, class: "btn-default btn-skills" %>
+</div>

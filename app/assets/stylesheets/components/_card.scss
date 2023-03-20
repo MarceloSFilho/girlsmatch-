@@ -168,3 +168,33 @@
 .mb-75 {
   margin-bottom: 75px;
 }
+
+.s-style-buttom {
+  position: absolute;
+  height: 44px;
+  background: gainsboro;
+  padding: 15px;
+  border-radius: 22px;
+  text-align: center;
+  text-decoration: none;
+  height: 50px;
+  margin-left: -57px;
+  border: 5px solid black;
+  padding-top: 10px;
+}
+
+#query {
+  background-color: snow;
+  width: 550px !important;
+  height: 50px;
+  display: inline-block;
+  border: 5px solid black;
+  border-radius: 20px;
+  width: 400px;
+  font-weight: bold;
+}
+
+.align-form-center{
+  text-align: -webkit-center;
+  margin-top: 75px;
+}
