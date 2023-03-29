@@ -1,0 +1,32 @@
+.card-mentors {
+  background: $yellow-g;
+  margin: 75px 40px;
+  height: 387px;
+  width: 300px;
+  border: 5px solid black;
+  border-radius: 20px;
+  align-items: center;
+  p {
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 5px;
+    font-family: $font-header-form;
+  }
+}
+
+.user-img {
+  width: 230px;
+  height: 180px;
+  margin: 30px auto;
+  border: 5px solid black;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+}
+
+.choose-foto {
+  width: 217px;
+  height: 209px;
+  border-radius: 12px;
+}

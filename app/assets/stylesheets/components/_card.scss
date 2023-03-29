@@ -1,46 +1,211 @@
 .card-view {
   background: $yellow-g;
-  margin: 75px auto;
-  height: 400px;
+  margin: 75px 76px;
+  height: 460px;
   width: 300px;
   border: 5px solid black;
   border-radius: 20px;
   box-shadow: 30px 30px 0 grey;
 }
 
-.card-view .card-img {
-  width: 230px;
+.card-img {
+  width: 230px !important;
   background: white;
-  height: 220px;
+  height: 180px !important;
   margin: 30px auto;
   border: 5px solid black;
   border-radius: 20px;
 }
 
+.card-picture {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
 .card-infos {
   background: white;
-  height: 75px;
+  height: 180px;
   width: 230px;
   margin: 0 auto;
   border: 5px solid black;
   border-radius: 20px;
+  text-align: center;
+}
+
+.card-infos .p {
+  font-weight: bold;
+  margin: 0;
+  font-family: $font-header-form;
+  font-size: 20px;
+}
+.card-infos .h3 {
+  font-weight: bold;
+  margin: 10px;
+  font-family: $font-header-form;
+  font-size: 40px;
 }
 
 .card-infos-home {
-  margin: 0 auto;
+  margin: 0 auto 91px;
+  height: 18em;
+  width: 45em;
   padding: 50px;
   background: $blue-g;
-  width: 410px;
-  height: 50px;
   display: flex;
-  box-shadow: 30px 30px 0 grey;
   align-items: center;
   border: 5px solid black;
   border-radius: 20px;
+  position: relative;
   p {
     text-align: -webkit-center;
     color: white;
     font-family: $font-body;
     margin: 0;
+    padding: 10px;
   }
+}
+
+.h2-mt{
+  margin-top: 75px;
+}
+
+.ul-style {
+  font-weight: bold;
+  list-style: none;
+  padding: 0px;
+  padding-top: 40px;
+}
+
+.h1-name {
+  font-size: 25px;
+  font-family: $font-header-form;
+  font-weight: bold;
+  margin: 5px 0px 15px;
+}
+
+.p-bold {
+  font-weight: bold;
+  font-family: $font-body;
+  font-size: 17px;
+  text-align: center;
+}
+
+.ta-center {
+  text-align: justify;
+}
+
+.flower {
+  width: 450px;
+}
+
+.default-size-img {
+  width: 450px;
+}
+
+.girl {
+  width: 299px;
+  margin-top: -100px;
+  margin-left: 100px
+}
+
+.img-senha {
+  width: 510px;
+}
+
+.caneco {
+  width: 200px;
+}
+
+.pt-20px {
+  margin-top: 20px;
+}
+
+.depositions {
+  margin: 60px;
+  text-align: center;
+}
+
+.balloon {
+  width: 270px;
+  margin: 75px 0 10px;
+}
+
+.cards-depositions {
+  height: 200px;
+  width: 200px;
+  border: 5px solid black;
+  border-radius: 20px;
+  margin: 0 75px;
+}
+
+
+.p-balloon {
+  position: absolute;
+  margin: 125px 0px 0px 100px;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: $font-header-form;
+}
+
+.h2-depositions {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 100px;
+  font-size: 100px;
+  font-family: $font-header-form;
+}
+
+.description-card {
+  box-shadow: 30px 30px 0px gray;
+  border-radius: 20px;
+  padding: 30px;
+  font-weight: bold;
+  font-family: $font-body;
+  border: 5px solid black;
+  overflow-wrap: break-word;
+}
+
+
+.mb-75 {
+  margin-bottom: 75px;
+}
+
+.s-style-buttom {
+  position: absolute;
+  height: 44px;
+  background: gainsboro;
+  padding: 15px;
+  border-radius: 22px;
+  text-align: center;
+  text-decoration: none;
+  height: 50px;
+  margin-left: -57px;
+  border: 5px solid black;
+  padding-top: 10px;
+}
+
+#query {
+  background-color: snow;
+  width: 550px !important;
+  height: 50px;
+  display: inline-block;
+  border: 5px solid black;
+  border-radius: 20px;
+  width: 400px;
+  font-weight: bold;
+}
+
+.align-form-center{
+  text-align: -webkit-center;
+  margin-top: 75px;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+.mt-100px {
+  margin-top: 200px;
 }

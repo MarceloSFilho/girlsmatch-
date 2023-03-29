@@ -1,3 +1,27 @@
-<% @mentors.each do |mentor| %>
-  <%= link_to mentor.username, user_path(mentor)  %>
-<% end %>
+
+<div class="container">
+  <%= form_with url: mentorships_path, method: :get, class:"align-form-center" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      placeholder: "Buscar por linguagem"
+    %>
+    <%= submit_tag "🔎", class: "s-style-buttom" %>
+  <% end %>
+
+  <div class="row jc-center">
+    <% @mentors.each do |mentor| %>
+      <div class="card-mentors col-4 d-flex flex-column">
+        <p><%= mentor.username.capitalize  %></p>
+        <% image_url =  mentor.photo.attached? ? cl_image_path(mentor.photo.key) : "https://www.promoview.com.br/uploads/images/unnamed%2819%29.png" %>
+        <div class="user-img" style="background-image: url('<%= image_url %>');">
+        </div>
+          <% if mentor.available %>
+            <%= link_to "Ver perfil!", user_path(mentor), class: "btn-default-big mx-auto" %>
+          <% else %>
+            <p>Mentora não disponível</p>
+          <% end %>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to "Voltar", profile_path, class: "btn-default btn-skills" %>
+</div>

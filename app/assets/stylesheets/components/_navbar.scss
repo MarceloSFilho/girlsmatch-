@@ -29,3 +29,27 @@
 .vertical-bar {
   padding-top: 9px;
 }
+
+.avatar {
+  border: 2px solid black;
+  border-radius: 5px;
+
+  &:hover {
+    transition: 10ms;
+    transform: scale(1.2);
+  }
+}
+
+.dropdown-menu {
+  border: 5px solid black;
+  background: $yellow-g;
+}
+
+.dropdown-item {
+  font-family: $font-body;
+  font-weight: bold;
+}
+
+.navbar-collapse {
+  font-weight: bold;
+}

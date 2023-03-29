@@ -1,5 +1,33 @@
-<h1>
-  <%= @user.username %>
-</h1>
 
-<%= link_to "Choose this mentor", new_user_mentorship_path(@user) %>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h2 class="sign"><%= @user.username.capitalize %></h2>
+      <div class="description-card">
+        <%= @user.description %>
+      </div>
+    </div>
+    <div class="card-view col-6">
+      <div class="card-img">
+          <% if @user.photo.attached? %>
+          <%= cl_image_tag @user.photo.key, class: "card-picture" %>
+          <% else %>
+          <%= image_tag "https://www.promoview.com.br/uploads/images/unnamed%2819%29.png", class: "card-picture" %>
+          <% end %>
+      </div>
+      <div class=" card-infos">
+          <% if @user.skills.present? %>
+            <ul class="ul-style">
+            <% @user.skills.each do |skill| %>
+            <li><%= skill.language %></li>
+            <% end %>
+            </ul>
+          <% end %>
+      </div>
+    </div>
+    <div>
+    <%= link_to "Voltar", mentorships_path, class: "btn-default" %>
+    <%= link_to "Enviar convite", user_mentorships_path(@user), data: { "turbo_method": :post }, class:"btn-default-big" %>
+    </div>
+  </div>
+</div>

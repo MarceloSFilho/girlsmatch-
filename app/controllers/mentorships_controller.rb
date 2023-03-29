@@ -1,10 +1,15 @@
 class MentorshipsController < ApplicationController
-  def index
-    @mentors = User.where('mentor' => true)
+  before_action :set_mentorship, only: [:update, :destroy]
+
+ def index
+    if params[:query].present?
+      @mentors = User.search_by_name_and_language(params[:query])
+    else
+      @mentors = User.where(student: false)
+    end
   end
 
   def new
-    @mentorship = Mentorship.new
   end
 
   def create
@@ -16,23 +21,38 @@ class MentorshipsController < ApplicationController
     if @mentorship.save
       redirect_to my_proposals_path
     else
-      render :new, status: :unprocessable_entity
+      redirect_to profile_path, alert: "Solicitação já enviada"
     end
-    # para criar a mentoria o estudante faz uma requisição(proposal) para o mentor -> responsabilidade do botão submmi
   end
 
   def my_proposals
-
+    if current_user.student
+      @mentorships = Mentorship.where(student: current_user)
+    else
+      @mentorships = Mentorship.where(mentor: current_user)
+    end
   end
 
   def update
-    # essa rota vai trocar o valor do boolean accepted
+    # essa rota vai trocar o valor do boolean accepted -> responsabilidade do mentor
+    @mentorship.update(accepted: :true)
     # tem que ter um chatroom.create find or create_by
+    mentor = @mentorship.mentor
+    student = @mentorship.student
+    name = "#{mentor.username} x #{student.username}"
+    @chatroom = Chatroom.find_or_create_by!(student: student, mentor: mentor, name: name)
     # e redirecionar pro chatroom
+    redirect_to chatroom_path(@chatroom)
   end
 
   def destroy
-    # o destroy muda o status de completed pra true
+    mentor = @mentorship.mentor
+    student = @mentorship.student
+    name = "#{mentor.username} x #{student.username}"
+    @chatroom = Chatroom.find_or_create_by!(student: student, mentor: mentor, name: name)
+    @chatroom.destroy
+    @mentorship.destroy
+    redirect_to my_proposals_path
   end
 
   private
@@ -43,7 +63,7 @@ class MentorshipsController < ApplicationController
 
 
   def mentorship_params
-    params.require(:mentorship).permit(:accepted, :completed)
+    params.require(:mentorship).permit(:accepted, :completed, :photo)
   end
 
 end

@@ -1,5 +1,19 @@
-<h2>new language</h2>
+<div class="container">
+  <h2 class="sign">Minhas habilidades</h2>
 
-<%= render "skills/form"  %>
+  <%= render "skills/form"  %>
 
-<%= link_to "back to my profile", profile_path%>
+  <div class="container container-skills">
+    <ul class="skill-bold">
+      <% current_user.skills.each do |skill| %>
+              <li><%= skill.language %>
+                  <%= button_to "Excluir skill", skill_path(skill), method: :delete, class: "btn-default-delete" %>
+              </li>
+      <% end %>
+    </ul>
+
+  </div>
+
+  <%= link_to "Voltar", profile_path, class: "btn-default" %>
+
+</div>
