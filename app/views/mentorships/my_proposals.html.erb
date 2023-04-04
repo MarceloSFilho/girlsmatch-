@@ -1,17 +1,33 @@
-<h1>My proposals</h1>
+<div class="container">
+  <h1 class="sign"> Seus convites </h1>
 
-<%= current_user.username %>
 
-<% @mentorships.each do |mentorship| %>
-  <% if current_user.student %>
-    <% chatroom = Chatroom.find_by(student: current_user, mentor: mentorship.mentor) %>
-    <%= mentorship.mentor.username %>
-    <%= mentorship.completed %>
-    <%= link_to "Abrir chat", chatroom_path(chatroom) if mentorship.accepted %>
-  <% else %>
-    <%= mentorship.student.username %>
-    <%= mentorship.completed %>
-    <%= mentorship.accepted %>
-    <%= link_to "Aceitar", mentorship_path(mentorship), data: { "turbo_method": :patch} %>
-  <% end %>
-<% end %>
+  <div class="row">
+    <% @mentorships.each do |mentorship| %>
+      <div class="card-mentors col-md-4 d-flex flex-column">
+        <% if current_user.student %>
+          <% chatroom = Chatroom.find_by(student: current_user, mentor: mentorship.mentor) %>
+          <p><%= mentorship.mentor.username.capitalize %></p>
+          <% image_url =  mentorship.mentor.photo.attached? ? cl_image_path(mentorship.mentor.photo.key) : "https://www.promoview.com.br/uploads/images/unnamed%2819%29.png" %>
+          <div class="user-img" style="background-image: url('<%= image_url %>');"></div>
+          <%= link_to "Abrir chat", chatroom_path(chatroom), class: "btn-default-big" if mentorship.accepted %>
+        </div>
+
+        <% else %>
+          <p><%= mentorship.student.username.capitalize %></p>
+          <% image_url =  mentorship.student.photo.attached? ? cl_image_path(mentorship.student.photo.key) : "https://www.promoview.com.br/uploads/images/unnamed%2819%29.png" %>
+          <div class="user-img" style="background-image: url('<%= image_url %>');"></div>
+
+          <div class="butao">
+            <%= link_to "Aceitar", mentorship_path(mentorship), data: { "turbo_method": :patch }, class: "btn-default-update" %>
+            <%= link_to "Recusar", mentorship_path(mentorship), data: { "turbo_method": :delete, turbo_confirm: "Deseja realmente finalizar?" }, class: "btn-default-delete"  %>
+          </div>
+    </div>
+      <% end %>
+      <% end %>
+  </div>
+
+
+    <%= link_to "Voltar", profile_path, class: "btn-default btn-skills" %>
+
+</div>

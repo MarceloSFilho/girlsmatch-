@@ -1,39 +1,52 @@
 <div class="container">
-  <h2 class="sign">Edit <%= resource_name.to_s.humanize %></h2>
+  <h2 class="sign">Editar <%= current_user.username %></h2>
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= f.error_notification %>
+  <div class="row">
 
-    <div class="form-inputs">
-      <%= f.input :email, required: true, autofocus: true %>
+    <div class="col-md-6">
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= f.error_notification %>
 
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-      <% end %>
+        <div class="form-inputs">
+          <%= f.input :email, required: true, autofocus: true %>
 
-      <%= f.input :password,
-                  hint: "leave it blank if you don't want to change it",
-                  required: false,
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
-                  required: false,
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :current_password,
-                  hint: "we need your current password to confirm your changes",
-                  required: true,
-                  input_html: { autocomplete: "current-password" } %>
-      <%= f.input :photo, as: :file %>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+          <% end %>
+
+          <%= f.input :password,
+                      hint: "leave it blank if you don't want to change it",
+                      required: false,
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password_confirmation,
+                      required: false,
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :current_password,
+                      hint: "we need your current password to confirm your changes",
+                      required: true,
+                      input_html: { autocomplete: "current-password" } %>
+          <%= f.input :photo, as: :file %>
+          <%= f.input :description %>
+          <%# if current_user.mentor %>
+            <%= f.simple_fields_for :skills do |s| %>
+              <%= s.input :language, collection: Skill::LANGUAGES %>
+            <% end %>
+          <%# end %>
+
+        </div>
+      </div>
+      <div class="col-md-6">
+        <%= image_tag "mulhercoding.png", class:"flower" %>
+      </div>
 
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Update", class:"btn-default" %>
+      <%= f.button :submit, "Editar", class:"btn-default-update" %>
     </div>
   <% end %>
 
-  <h3 class="sign">Cancel my account</h3>
+  <div class="form-text mt-100px">Não esta feliz? <%= button_to "Cancelar conta", registration_path(resource_name), data: { confirm: "Você tem certeza?", turbo_confirm: "Você tem certeza?" }, method: :delete, class:"btn-default-delete" %></div>
 
-  <div class="form-text">Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn-default-big" %></div>
-
-  <%= link_to "Back", :back, class:"btn-default" %>
+  <%= link_to "Voltar", :back, class:"btn-default" %>
 </div>

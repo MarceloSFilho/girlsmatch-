@@ -1,16 +1,18 @@
 class MentorshipsController < ApplicationController
-  before_action :set_mentorship, only: :update
+  before_action :set_mentorship, only: [:update, :destroy]
 
-
-  def index
-    @mentors = User.where('mentor' => true)
+ def index
+    if params[:query].present?
+      @mentors = User.search_by_name_and_language(params[:query])
+    else
+      @mentors = User.where(student: false)
+    end
   end
 
   def new
   end
 
   def create
-    # criar requisição
     @mentorship = Mentorship.new
     @mentor = User.find(params[:user_id])
     @student = current_user
@@ -21,7 +23,6 @@ class MentorshipsController < ApplicationController
     else
       redirect_to profile_path, alert: "Solicitação já enviada"
     end
-    # para criar a mentoria o estudante faz uma requisição(proposal) para o mentor -> responsabilidade do botão submmi
   end
 
   def my_proposals
@@ -30,8 +31,6 @@ class MentorshipsController < ApplicationController
     else
       @mentorships = Mentorship.where(mentor: current_user)
     end
-    # se o current user for student ele só vai ver nome do mentor e o status do accepted
-    # se o current user for mentor vai aparecer o botao de aceitar essa mentoria que update o acepted e redireciona pro link do chatroom -> e cria o chat room
   end
 
   def update
@@ -41,16 +40,19 @@ class MentorshipsController < ApplicationController
     mentor = @mentorship.mentor
     student = @mentorship.student
     name = "#{mentor.username} x #{student.username}"
-    @chatroom = Chatroom.create!(student: student, mentor: mentor, name: name)
-
+    @chatroom = Chatroom.find_or_create_by!(student: student, mentor: mentor, name: name)
     # e redirecionar pro chatroom
     redirect_to chatroom_path(@chatroom)
   end
 
-  def completed
-    @mentorship = Mentorship.find(set_mentorship)
-    @mentorship.update([:completed])
-    # o destroy muda o status de completed pra true
+  def destroy
+    mentor = @mentorship.mentor
+    student = @mentorship.student
+    name = "#{mentor.username} x #{student.username}"
+    @chatroom = Chatroom.find_or_create_by!(student: student, mentor: mentor, name: name)
+    @chatroom.destroy
+    @mentorship.destroy
+    redirect_to my_proposals_path
   end
 
   private

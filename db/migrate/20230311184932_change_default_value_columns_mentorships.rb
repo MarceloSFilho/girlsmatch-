@@ -10,7 +10,7 @@ class ChangeDefaultValueColumnsMentorships < ActiveRecord::Migration[7.0]
   end
 
   def down
-    change_column :mentorships, :completed, nil
+    change_column :mentorships, :completed, false
     change_column :mentorships, :accepted, false
   end
 end

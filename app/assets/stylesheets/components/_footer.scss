@@ -1,6 +1,31 @@
-footer {
+.footer {
   background: $green-g;
   border-top: 5px solid black;
-  height: 200px;
-  margin-top: 50px;
+  height: 100px;
+  width: 100%;
+  margin-top: auto;
+  text-align: center;
+}
+
+.fa-github {
+  color: white;
+  font-size: 30px;
+}
+
+.fa-linkedin {
+  color: white;
+  font-size: 30px;
+}
+
+.footer-icons {
+  margin-top: 10px;
+  padding: 0px;
+}
+
+.p-footer {
+  font-weight: bold;
+  font-size: 30px;
+  font-family: $font-header-form;
+  color: white;
+  margin: 0px;
 }
